@@ -16,17 +16,27 @@ var AppComponent = (function () {
             { "id": 1,
                 "name": "Super Tires",
                 "description": "There tires are the very best. ",
-                "inStock": 5 },
+                "inStock": 5,
+                "price": 4.99 },
             { "id": 2,
                 "name": "Super Wires",
                 "description": "There wires are the very best. ",
-                "inStock": 0 }
+                "inStock": 0,
+                "price": 9.49 }
         ];
     }
+    AppComponent.prototype.totalCarParts = function () {
+        var sum = 0;
+        for (var _i = 0, _a = this.carParts; _i < _a.length; _i++) {
+            var carPart = _a[_i];
+            sum++;
+        }
+        return sum;
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "<h1>{{title}}</h1>\n    <ul>\n        <li *ngFor=\"let carPart of carParts\">\n            <h2>{{carPart.name}}</h2>\n            <p>{{carPart.description}}</p>\n            <p *ngIf=\"carPart.inStock > 0\">{{carPart.inStock}} in stock</p>\n            <p *ngIf=\"carPart.inStock === 0\">Out of stock</p>\n        </li>\n    </ul>"
+            template: "<h1>{{title}}</h1>\n    <p>There are {{totalCarParts()}} total car parts in store. </p>\n    <ul>\n        <li *ngFor=\"let carPart of carParts\">\n            <h2>{{carPart.name | uppercase}}</h2>\n            <p>{{carPart.description}}</p>\n            <p>{{carPart.price | currency:'EUR':true }}</p>\n            <p *ngIf=\"carPart.inStock > 0\">{{carPart.inStock}} in stock</p>\n            <p *ngIf=\"carPart.inStock === 0\">Out of stock</p>\n        </li>\n    </ul>"
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
