@@ -11,11 +11,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var AppComponent = (function () {
     function AppComponent() {
+        this.title = 'Ultra Racing';
+        this.carParts = [
+            { "id": 1,
+                "name": "Super Tires",
+                "description": "There tires are the very best. ",
+                "inStock": 5 },
+            { "id": 2,
+                "name": "Super Wires",
+                "description": "There wires are the very best. ",
+                "inStock": 0 }
+        ];
     }
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: '<h1>Hello Angular!</h1>'
+            template: "<h1>{{title}}</h1>\n    <ul>\n        <li *ngFor=\"let carPart of carParts\">\n            <h2>{{carPart.name}}</h2>\n            <p>{{carPart.description}}</p>\n            <p *ngIf=\"carPart.inStock > 0\">{{carPart.inStock}} in stock</p>\n            <p *ngIf=\"carPart.inStock === 0\">Out of stock</p>\n        </li>\n    </ul>"
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
